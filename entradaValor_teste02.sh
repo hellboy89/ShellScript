@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 ####################################################
 #	Script que busca nomes no diretorio.	   #

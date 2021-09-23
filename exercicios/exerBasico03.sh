@@ -1,6 +1,9 @@
-#/bin/bash
+#!/bin/bash
 
 echo "\n==================>RELATORIO DO USUARIO<============================"
+
+# Verificacao feita para validar existencia do usuario.
+ls /home/$1 > /dev/null 2>&1 || { echo "Usuario Inexistente" ; exit 1; }
 
 USERLOGON=$(w | tail -1 | awk '{print $1}')
 SHOWID=$(id -u $USERLOGON)

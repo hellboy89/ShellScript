@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 read -p "Digite o primeiro valor: " VALOR1
 read -p "Digite o segundo valor: " VALOR2
