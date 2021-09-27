@@ -17,27 +17,38 @@ then
 	sleep 2
 	mkdir /home/backup
 	chmod 777 /home/backup
-else
-	echo "Diretório $VERIFICADIR, já existe!"
 fi
 
-echo ; echo
-
 #if [ ! -d "$VERIFICAULTBACKUP" ]
-if [ ! $QUANTBACKUPS -gt "2" ]
+if [ "$QUANTBACKUPS" -ge 2 ]
 then
-	read -p "Já existe um backup criado nos ultimos 7 dias, quer continuar [s/n]? " CONTINUAR
-	if [ "$CONTINUAR" == "s" ]
+	echo ; read -p "Já existe um backup criado nos ultimos 7 dias, quer continuar? [S/n] " CONTINUAR
+	if [ "$CONTINUAR" == "s" -o "$CONTINUAR" == "S" -o "$CONTINUAR" == "" ]
 	then
-		echo -e "\nINICIANDO BACKUP...\n"
+		echo -e "\nINICIANDO BACKUP..."
 		tar -zcvf /home/backup/$NOMEARQUIVO.tar.gz /home/kali/ > /dev/null 2> /dev/null
-		echo -e "\nBackup Feito, $NOMEARQUIVO\n"
+		echo -e "\nBackup Feito, $NOMEARQUIVO"
 	else
 		exit 1
 	fi
+else
+	echo -e "\nINICIANDO BACKUP..."
+	tar -zcvf /home/backup/$NOMEARQUIVO.tar.gz /home/kali/ > /dev/null 2> /dev/null
 fi
 
+echo -e "\n =====> Lista Abaixo de Todos os Backups <===== \n"
+ls -l /home/backup/
 
+echo ; read -p "Deseja Limpar o Diretório? [s/N] " OPLIMPAR
+if [ "$OPLIMPAR" == "s" ]
+then
+	rm -fv /home/backup/*
+elif [ "$OPLIMPAR" == "" ]
+then
+	exit 1
+else
+	exit 1
+fi
 
 ##### ANOTACOES #####
 # Nome do arquivo de backup será como abaixo.
