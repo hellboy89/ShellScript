@@ -13,7 +13,8 @@ echo
 
 #####
 
-for (( j=$inicio ; j<=final ; j++ ))
+for (( j=$inicio ; j<=$final ; j++ ))
 do
 	echo "Exibindo o valor $j"
 done
+
