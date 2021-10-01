@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 
 NOMEPC=$(hostname)
 DATAATUAL=$(date)
