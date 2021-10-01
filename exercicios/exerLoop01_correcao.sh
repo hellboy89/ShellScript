@@ -1,5 +1,17 @@
 #!/bin/bash
 
+<<uid-usuarios
+
+Nessa linha abaixo ele consulta o arquivo /etc/login.defs, onde mostra
+qual o UID mínimo e máximo para cada usuário criado, no padrão do Ubuntu
+assim que criado o usuário o UID é maior do que 1000.
+
+Onde ele busca pelo UID_MIN e UID_MAX, nas linhas de configuração.
+
+uid-usuarios
+
+# O símbolo ^ no começo, quer dizer tudo que começar com UID_MIN.
+
 minUID=$(grep "^UID_MIN" /etc/login.defs | tr -s "\t" | cut -f2)
 maxUID=$(grep "^UID_MAX" /etc/login.defs | tr -s "\t" | cut -f2)
 
