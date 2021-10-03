@@ -35,6 +35,8 @@ comment-saidaLogs3
 
 ifconfig | tee -a saidaLogs-Total.log
 
+cat /etc/passwd | grep teste | tee -a saidaLogs.log
+
 
 # ============> ABRINDO ARQUIVO DE LOGS
 
@@ -42,7 +44,7 @@ echo -e "\n=====> ARQUIVO DE LOGS <=====\n"
 
 if [ -f $arquivoLog ]
 then
-	cat $arquivoLog
+	echo "arquivo existe"
 else
 	echo "arquivo de logs não existe"
 fi
